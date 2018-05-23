@@ -1,0 +1,38 @@
+body{
+    background: lightcyan;
+}
+.wrapper{
+    display: grid;
+    width: 1000px;
+    height: 350px;
+    position: absolute;
+    top: 35%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -500px;
+    justify-items: center;
+}
+
+.selectProblem{
+    display: grid;
+    width: 400px;
+    height: 100px;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+}
+ 
+
+.rateSolution{
+    display: none;
+    grid-template-columns: 100%;
+    grid-auto-flow: dense;
+    justify-items: center;
+}
+
+.endWork{
+    display: none;
+}
+.endWork button{
+    width: 100%;
+    height: 100%;
+}

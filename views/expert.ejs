@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Expert</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/expert.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="selectProblem" id="selectProblem">
+            <h3>Выберите проблему:</h3>
+            <select name="problem" id="select" >
+                <% problems.forEach(function(item) { %>
+                    <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
+                    <% }); %>
+            </select>
+            <button id="submit">Выбрать</button>
+        </div>
+        <div class="rateSolution" id="rateSolution">
+            <h2>Оцените решения от 0 до 10</h2>
+            <div class="solutions" id="solutions">
+                
+            </div>
+            <button id="submit">ОК</button>
+        </div>
+        <div class="endWork" id="endWork">
+            <p>Ваши оценки были внесены в базу!<br> Нажмите на кнопку для перехода на главную страницу</p>
+            <a href="/"><button>На главную</button></a>
+        </div>
+    </div>
+    <script src="/javascripts/expert.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        getProblems(<%-JSON.stringify(problems) %>, <%- expert %>);
+    </script>
+</body>
+</html>

@@ -10,6 +10,9 @@ const schema = new Schema({
     password: {
         type: String,
         required: true,
+    },
+    rule:   {
+        type: String
     }
 }) 
 module.exports = mongoose.model('user', schema);

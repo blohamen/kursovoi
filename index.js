@@ -3,7 +3,7 @@ const database = require("./database");
 const app = require("./app");
 
 database().then(info =>{
-  console.log(`Connected to ${info.host}:${info.port}/ ${info.name}`);
+  console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
   app.listen(config.PORT, () => 
   console.log(`Listen server on ${config.PORT} port`));
 })

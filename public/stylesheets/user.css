@@ -1,0 +1,41 @@
+body{
+    background: lightcyan;
+}
+
+.wrapper{
+    display: grid;
+    width: 1000px;
+    height: 350px;
+    position: absolute;
+    top: 35%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -325px;
+}
+
+.problemName{
+    display: grid;
+    width: 650px;
+    height: 200px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+    text-align: center;
+}
+
+.solutions{
+    display: none;
+    position: relative;
+    width: 650px;
+    height: 350px;
+    grid-template-rows: 12% 10% 10%;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+    grid-auto-rows: 10%;
+}
+.solutions h4, .solutions input{
+    grid-column: 1 / 3;
+}
+.close{
+    position: absolute;
+    right: -20px;
+}
