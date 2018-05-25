@@ -23,7 +23,12 @@ problem.find({}, null, function (err, res) {
 });
 
 app.get('/registration', (req, res) => res.render('registration'));
-app.get('/admin', (req, res) => res.render('admin'));
+app.get('/admin', (req, res) => {
+  user.find({}, null, function(err, doc){
+    users = doc;
+  });
+  res.render('admin', {users: users});
+});
 app.get('/user', (req, res) => {
     problem.find({}, null, function (err, doc) {
       if(err) res.sendStatus(500);
@@ -48,7 +53,7 @@ app.post('/registration', (req,res) =>{
       user.create({
         login: login,
         password: password,
-        rule: false
+        rule: "user"
       });
       res.redirect('/form');
     }
@@ -89,4 +94,4 @@ app.get('/', function (req, res) {
   res.render('index');
 })
  
-module.exports = app; 
+module.exports = app;  
