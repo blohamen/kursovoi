@@ -6,21 +6,19 @@
 </head>
 <body>
     <div class="wrapper" id = "wrapper">
-         <div class="problemName" id="problemName">
-             <h4>Введите проблему</h4>
-             <input type="text" name="problemName" value>
-             <button>ОК</button>
-         </div>
-         <div class="solutions" id="solutions">
-             <h4>Введите предположительное решение(я) проблемы</h4>
-             <button id="submit">ОК</button>
-             <button id="addSolution">Добавить решение</button>
-             <input type="text" id="solution" placeholder="Предположительное решение" value> 
-         </div>
+        <div class="selectProblem" id="selectProblem">
+            <h3>Выберите проблему:</h3>
+            <select name="problem" id="select" >
+                <% problems.forEach(function(item) { %>
+                    <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
+                    <% }); %>
+            </select>
+            <button id="submit">Выбрать</button>
+        </div>
     </div>
     <script src="/javascripts/user.js" type="text/javascript"></script>
     <script type="text/javascript">
-        test( <%- problems %>);
+    getArrays(<%-problems %>, <%-users%>);
     </script>
 </body>
 </html>

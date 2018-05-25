@@ -34,6 +34,7 @@ function addSolutions(){
         inputRating.type = "number";
         inputRating.min = "0";
         inputRating.max = "10";
+        inputRating.value = "0";
         const title = document.createElement("h3");
         title.innerHTML = problemsArr[selectedIndex].solutions[i].name;
         solution.appendChild(title);
@@ -52,24 +53,31 @@ rateSolution.addEventListener("click", (event)=>{
             return elem.value < 0 || elem.value > 10;
             })
         ){
-            inputRating.forEach(elem =>{
-                expertRating.push(elem.value);
-            })
+            inputRating.forEach(item =>{
+                expertRating.push(item.value);
+            });
             rateSolution.style.display = "none";
             endWork.style.display = "grid";
-            let problem = new Problem(selectedIndex, expertRating);
+            let problem = new Problem(problemsArr[selectedIndex].name, expertRating);
+            for(let i = 0; i< currentExpert.problemRatings.length; i++) {
+                if(currentExpert.problemRatings[i].name === problem.name){
+                    currentExpert.problemRatings.splice(i,1);
+                    break;
+                }
+            }
+            currentExpert.problemRatings.push(problem);
             const xhr = new XMLHttpRequest();
-            problem = JSON.stringify(problem);
+            currentExpert = JSON.stringify(currentExpert);
             xhr.open("POST", "expert");
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            xhr.send(problem);
+            xhr.send(currentExpert);
         }
     }
 })
 
 class Problem{
-    constructor(selectedIndex, rating){
-        this.selectedIndex = selectedIndex;
+    constructor(nameProblem, rating){
+        this.name = nameProblem;
         this.rating = rating;
     }
 }

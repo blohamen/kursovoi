@@ -19,6 +19,7 @@ body{
     height: 100px;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
+    grid-row-gap: 20px;
 }
  
 

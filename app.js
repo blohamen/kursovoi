@@ -15,18 +15,29 @@ app.get('/form', (req, res) => res.render('form'));
 
 
 
-let expert;
-
-let problems;
+let expert; // идентификационная переменная (вместо cookie)
+let users; // массив для передачи в user
+let problems; // массив проблем
 problem.find({}, null, function (err, res) {
   problems = res;
 });
 
 app.get('/registration', (req, res) => res.render('registration'));
 app.get('/admin', (req, res) => res.render('admin'));
-app.get('/user', (req, res) => res.render('user'));
+app.get('/user', (req, res) => {
+    problem.find({}, null, function (err, doc) {
+      if(err) res.sendStatus(500);
+      else problems = doc;
+    });
+    user.find({}, null, function(err, doc){
+      users = doc;
+    });
+      res.render('user', {users:users, problems: problems});
+});
+
 app.get('/expert', (req, res) => {
-  res.render('expert', {problems: problems, expert:expert});
+  if(!expert) res.sendStatus(403);
+  else res.render('expert', {problems: problems, expert:expert});
 });
 
 
@@ -68,9 +79,10 @@ app.post('/form', (req,res) =>{
 });
 
 app.post('/expert', bodyParser.json(), function(req, res){
-    console.log(req.body);
-    console.log(req.body.rating);
-    res.end("HI");
+    user.findOneAndUpdate(JSON.parse(expert), req.body, function(err,doc){
+      if(err) throw err;
+      return res.sendStatus(200);
+    });
 })
 
 app.get('/', function (req, res) {
