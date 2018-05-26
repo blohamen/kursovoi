@@ -39,10 +39,18 @@ h3{
     grid-template-columns: 50% 50%;
     border: 1px solid gray;
     text-align: center;
+    position: relative;
 }
 .header{
     text-align: center;
 }
 .userInfo h4{
     text-align: center;
+}
+.delete{
+    background: url('../img/trash.png');
+    height: 45px;
+    width: 40px;
+    position: absolute;
+    
 }

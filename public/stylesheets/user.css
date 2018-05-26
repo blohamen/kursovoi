@@ -5,12 +5,12 @@ body{
 .wrapper{
     display: grid;
     width: 1000px;
-    height: 350px;
     position: absolute;
     top: 35%;
     margin-top: -75px;
     left: 50%;
-    margin-left: -325px;
+    margin-left: -500px;
+    justify-content: center;
 }
 
 .selectProblem{
@@ -21,4 +21,64 @@ body{
     justify-items: center;
     grid-row-gap: 20px;
 }
- 
+.selectProblem > button{
+    width: 400px;
+    height: 60px;
+}
+
+.expertsList{
+    display: grid;
+    list-style-type: none;
+    justify-content: center;
+    align-content: center;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-padding-start: 0px;
+    grid-row-gap: 2px;
+}
+
+.expert{
+    border: 1px solid gray;
+    width: 250px;
+    border-radius: 10%;
+    align-items: center;
+    height: 50px;
+    text-align: center;
+}
+.chooseExperts{
+    display: none;
+    justify-items: center;
+    grid-row-gap: 20px;
+}
+.tableDiv {
+    display: none;
+    width: 700px;
+    text-align: center;
+}
+.chooseExperts > button{
+   width: 400px;
+   height: 60px;
+}
+.choose{
+    background: lightgreen;
+}
+.table{
+    border-spacing: 0px 10px;
+}
+.results{
+    display: none;
+    position: absolute;
+    background: lightblue;
+    width: 650px;
+    height: 500px;
+    top: 35%;
+    margin-top: -100px;
+    left: 50%;
+    margin-left: -325px;
+    box-shadow: 10px 10px 100px 2000px rgba(0, 0, 0, 0.37);
+    justify-content: center;
+}
+.results > button{
+    width: 400px;
+    height: 60px;
+ }
