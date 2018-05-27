@@ -28,7 +28,9 @@ function addExperts() {
           return problem.name === problemsArr[selectedIndex].name;  
         })){
             const li = document.createElement("li");
-            li.innerHTML = user.name;
+            const p = document.createElement("p");
+            p.innerHTML = user.name;
+            li.appendChild(p);
             li.classList = "expert";
             expertsList.appendChild(li);
         }
@@ -40,12 +42,17 @@ let results;
 chooseExperts.addEventListener("click", event => {
     const target = event.target;
     const mainSolution = document.getElementById("mainSolution");
+    const caption = document.getElementById("problemName");
+    console.log(target);
     if(target.classList.contains("expert")){
         target.classList.toggle("choose"); 
+    } 
+    if(target.parentNode.classList.contains("expert")){
+        target.parentNode.classList.toggle("choose");
     }
     if(target.id === "submit" && choosenExperts.length) {
         chooseExperts.style.display = "none";
-        tableDiv.firstElementChild.innerHTML = 'Оценки экспертов по проблеме: ' + problemsArr[selectedIndex].name;
+        caption.innerHTML = 'Оценки экспертов по проблеме: ' + problemsArr[selectedIndex].name;
         tableDiv.style.display = "grid";
         generateTable();
         results = getResults();
@@ -80,7 +87,7 @@ function generateTable() {
     const table = document.getElementById("table");
     const solutionsHeader = document.createElement("tr");
     const th = document.createElement("th");
-    th.innerHTML = "&nbsp;"; 
+    th.innerHTML = "Эксперты"; 
     solutionsHeader.appendChild(th);
     
     for(let i = 0; i < problemsArr[selectedIndex].solutions.length; i++){
@@ -93,7 +100,7 @@ function generateTable() {
     for(let i = 0; i < choosenExperts.length; i++) {
         const tr = document.createElement("tr");
         const nameExpert = document.createElement("td");
-        nameExpert.innerHTML = choosenExperts[i].innerHTML;
+        nameExpert.innerHTML = choosenExperts[i].firstElementChild.innerHTML;
         tr.appendChild(nameExpert);
         let expertIndex;
         let problemIndex;
@@ -198,7 +205,7 @@ class Diagram {
         colorIndex = 0;
         let legendHTML = "";
         this.solutions.forEach(item =>{
-        legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[colorIndex++]+";'>&nbsp;</span> "+item.name+"</div>";
+        legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[colorIndex++]+";'>&nbsp;</span> "+"<p>"+item.name+ "(Решение №"+ colorIndex+ ")"+"</p>"+"</div>";
         });
         this.options.legend.innerHTML = legendHTML;
     }

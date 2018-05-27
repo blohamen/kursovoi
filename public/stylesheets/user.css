@@ -15,17 +15,69 @@ body{
 
 .selectProblem{
     display: grid;
-    width: 400px;
-    height: 100px;
+    background: lightblue;
+    width: 600px;
+    height: 300px;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
     grid-row-gap: 20px;
+    border-radius: 2%;
+    align-items: center;
+    position: relative;
 }
 .selectProblem > button{
     width: 400px;
     height: 60px;
 }
+.selectProblem label{
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
 
+.selectProblem select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #2c3e50;
+    background-image: none;
+    width: 500px;
+    height: 80px;
+    margin: 0;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    border-radius: 2%;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 110px;
+    right: 50px;
+    bottom: 0;
+    padding: 0 1em;
+    background: #34495e;
+    pointer-events: none;
+    height: 80px;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #9AB999;
+  }
+  .select::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
 .expertsList{
     display: grid;
     list-style-type: none;
@@ -49,6 +101,19 @@ body{
     display: none;
     justify-items: center;
     grid-row-gap: 20px;
+    height: 400px;
+    width: 600px;
+    background: lightblue;
+    align-items: center;
+    border-radius: 2%;
+}
+.chooseExperts h4{
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: normal;
 }
 .tableDiv {
     display: none;
@@ -60,11 +125,33 @@ body{
    height: 60px;
 }
 .choose{
-    background: lightgreen;
+    background: #34495e;
 }
 .table{
-    border-spacing: 0px 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
 }
+th, td:first-child {
+    background: #AFCDE7;
+    color: white;
+    padding: 10px 20px;
+}
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+td {
+    background: #D8E6F3;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
 .results{
     display: none;
     position: absolute;
@@ -72,13 +159,52 @@ body{
     width: 650px;
     height: 500px;
     top: 35%;
-    margin-top: -100px;
+    margin-top: -250px;
     left: 50%;
     margin-left: -325px;
     box-shadow: 10px 10px 100px 2000px rgba(0, 0, 0, 0.37);
-    justify-content: center;
+    justify-items: center;
+    border-radius: 2%;
 }
 .results > button{
     width: 400px;
     height: 60px;
  }
+ .legend p{
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
+ }
+
+ .table caption {
+    background: #AFCDE7;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+    color: white;
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.tableDiv h4{
+    background: #AFCDE7;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+    color: white;
+    font-family: "Roboto Slab",serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}

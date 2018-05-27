@@ -4,10 +4,10 @@ body{
 .wrapper{
     display: grid;
     width: 1000px;
-    height: 350px;
+    height: 500px;
     position: absolute;
-    top: 35%;
-    margin-top: -75px;
+    top: 50%;
+    margin-top: -250px;
     left: 50%;
     margin-left: -500px;
     justify-items: center;
@@ -15,25 +15,115 @@ body{
 
 .selectProblem{
     display: grid;
-    width: 400px;
-    height: 100px;
+    background: lightblue;
+    width: 600px;
+    height: 300px;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
     grid-row-gap: 20px;
+    border-radius: 2%;
+    align-items: center;
+    position: relative;
 }
- 
+.selectProblem > button{
+    width: 400px;
+    height: 60px;
+}
+.selectProblem label{
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+.selectProblem select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #2c3e50;
+    background-image: none;
+    width: 500px;
+    height: 80px;
+    margin: 0;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    border-radius: 2%;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 110px;
+    right: 50px;
+    bottom: 0;
+    padding: 0 1em;
+    background: #34495e;
+    pointer-events: none;
+    height: 80px;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #9AB999;
+  }
+  .select::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
 
 .rateSolution{
     display: none;
     grid-template-columns: 100%;
     grid-auto-flow: dense;
     justify-items: center;
+    align-items: center;
+    background: lightblue;
+    width: 600px;
+    min-height: 500px;
+    border-radius: 2%;   
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 16px;
+    color: white;
+}
+
+.rateSolution h2 {
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+.rateSolution > button{
+    width: 300px;
+    height: 50px;
 }
 
 .endWork{
     display: none;
+    background: lightblue;
+    width: 500px;
+    min-height: 200px;
+    border-radius: 2%;   
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
 }
 .endWork button{
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 70px;
 }

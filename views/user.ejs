@@ -7,12 +7,14 @@
 <body>
     <div class="wrapper" id = "wrapper">
         <div class="selectProblem" id="selectProblem">
-            <h3>Выберите проблему:</h3>
+            <label for="select">Список доступных проблем</label>
+            <div class="select">
             <select name="problem" id="select">
                 <% problems.forEach(function(item) { %>
                     <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
                     <% }); %>
             </select>
+            </div>
             <button id="submit">Выбрать</button>
         </div>
             <div class="chooseExperts" id="chooseExperts">
@@ -21,14 +23,15 @@
                 <button id="submit">Выбрать</button>
             </div>
             <div class="tableDiv" id="tableDiv">
-                <h4 id="problemName"></h4>
-                <table id ="table" class="table"></table>
+                <table id ="table" class="table">
+                    <caption id="problemName"></caption>
+                </table>
                 <h4 id="mainSolution"></h4>
                 <button id="resultsButton">Результаты оценки проблемы</button>
             </div>
             <div class="results" id="results">
                 <canvas id="diagram"></canvas>
-                <div id="legend"></div>
+                <div id="legend" class="legend"></div>
                 <button id="submit">Закрыть окно</button>
             </div>
     </div>

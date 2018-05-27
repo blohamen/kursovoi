@@ -6,20 +6,20 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="selectProblem" id="selectProblem">
-            <h3>Выберите проблему:</h3>
-            <select name="problem" id="select" >
-                <% problems.forEach(function(item) { %>
-                    <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
-                    <% }); %>
-            </select>
-            <button id="submit">Выбрать</button>
-        </div>
+            <div class="selectProblem" id="selectProblem">
+                    <label for="select">Список проблем для оценивания</label>
+                    <div class="select">
+                    <select name="problem" id="select">
+                        <% problems.forEach(function(item) { %>
+                            <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
+                            <% }); %>
+                    </select>
+                    </div>
+                    <button id="submit">Выбрать</button>
+                </div>
         <div class="rateSolution" id="rateSolution">
             <h2>Оцените решения от 0 до 10</h2>
-            <div class="solutions" id="solutions">
-                
-            </div>
+            <div class="solutions" id="solutions"></div>
             <button id="submit">ОК</button>
         </div>
         <div class="endWork" id="endWork">
