@@ -1,5 +1,5 @@
 body{
-    background: aqua;
+    background: lightcyan;
 }
 .wrapper{
     display: grid;
@@ -11,8 +11,18 @@ body{
     left: 50%;
     margin-left: -250px;
     grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
 }
-.wrapper button{
+.wrapper button , .wrapper a{
     width: 100%;
     height: 100%;
+}
+
+h1{
+    grid-column: 1/3;
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 25px;
+    color: black
 }
