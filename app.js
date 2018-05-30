@@ -19,7 +19,7 @@ let expert; // идентификационная переменная (вмес
 let admin;
 app.get('/registration', (req, res) => res.render('registration'));
 app.get('/admin', (req, res) => {
-  if(!admin) res.sendStatus(403);
+  if(!admin) res.render('403');
   user.find({})
   .then(data=>{
     res.render('admin', {users: data});
@@ -37,7 +37,7 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/expert', (req, res) => {
-  if(!expert) res.sendStatus(403);
+  if(!expert) res.render('403');
   problem.find({})
   .then(problems=>{
     res.render('expert', {problems: problems, expert:expert});
@@ -99,4 +99,9 @@ app.post('/admin', bodyParser.json(), function(req, res){
     if(err) res.sendStatus(500);
   });
 })
+
+app.use(function(req, res,next) {
+  res.status(404).render("404");
+});
+
 module.exports = app;  
