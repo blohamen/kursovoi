@@ -4,7 +4,7 @@ const path = require('path');
 const userModel  = require('./models/user');
 const problemModel = require('./models/problem');
 const app = express();
-
+let expert = null; 
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,8 +29,8 @@ app.get('/user', async (req, res) => {
 });
 
 app.get('/expert', async (req, res) => {
-  const problems = await problemModel.find({}); // todo pass expert
-  return res.render('expert', { problems, expert:expert });
+  const problems = JSON.stringify(await problemModel.find({})); // todo pass expert
+  return res.render('expert', { problems, expert: JSON.stringify(expert) });
 });
 
 app.post('/registration', async (req,res) => {
@@ -59,12 +59,16 @@ app.post('/form', async (req,res) => {
   switch (user.rule) {
     case 'admin': return res.redirect('/admin');
     case 'user': return res.redirect('/user');
-    case 'expert': return res.redirect("/expert");
+    case 'expert': {
+      expert = user;
+      return res.redirect("/expert");
   }
+}
 });
 
 app.post('/expert', bodyParser.json(), async (req, res) => {
-  await userModel.findOneAndUpdate(JSON.parse(expert), req.body);
+  console.log(req.body.problemRatings);
+ await userModel.findOneAndUpdate(expert.toObject(), req.body);
   return res.sendStatus(200);
 });
 

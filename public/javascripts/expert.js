@@ -1,13 +1,10 @@
 const selectProblem = document.getElementById("selectProblem");
 let selectedIndex = 0;
 
-
-
 let problemsArr;
 let currentExpert;
 
-function getProblems(problems, expert){
-    console.log(problems, expert);
+function getProblems(problems, expert) {
     currentExpert = expert;
     problemsArr = problems;
 }
@@ -26,7 +23,7 @@ selectProblem.addEventListener("click", (event)=>{
     }
 });
 
-function addSolutions(){
+function addSolutions() {
     for(let i = 0; i< problemsArr[selectedIndex].solutions.length; i++){
         const solution = document.createElement("div");
         solution.classList = "solution";
@@ -45,14 +42,11 @@ function addSolutions(){
 
 const endWork = document.getElementById("endWork");
 const expertRating = [];
-rateSolution.addEventListener("click", (event)=>{
+rateSolution.addEventListener("click", (event)=> {
     const inputRating = Array.from(document.querySelectorAll("input"));
     const target = event.target;
     if(target.id === "submit"){
-        if(!inputRating.some(elem =>{
-            return elem.value < 0 || elem.value > 10;
-            })
-        ){
+        if(!inputRating.some(elem => elem.value < 0 || elem.value > 10)){
             inputRating.forEach(item =>{
                 expertRating.push(item.value);
             });
@@ -68,6 +62,7 @@ rateSolution.addEventListener("click", (event)=>{
             currentExpert.problemRatings.push(problem);
             const xhr = new XMLHttpRequest();
             currentExpert = JSON.stringify(currentExpert);
+            debugger;
             xhr.open("POST", "expert");
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.send(currentExpert);

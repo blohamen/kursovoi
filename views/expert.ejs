@@ -10,7 +10,7 @@
                     <label for="select">Список проблем для оценивания</label>
                     <div class="select">
                     <select name="problem" id="select">
-                        <% problems.forEach(function(item) { %>
+                        <% JSON.parse(problems).forEach(function(item) { %>
                             <option value=<%=String(item.name).split(' ').join("_") %>><%=item.name%></option>
                             <% }); %>
                     </select>
@@ -28,8 +28,8 @@
         </div>
     </div>
     <script src="/javascripts/expert.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        getProblems(<%-JSON.stringify(problems) %>, <%- expert %>);
+    <script>
+        getProblems(<%-problems%>, <%-expert%>);
     </script>
 </body>
 </html>
