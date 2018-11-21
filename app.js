@@ -54,7 +54,7 @@ app.post('/form', async (req,res) => {
     password: new RegExp('^'+password+'$', "i")
   });
     if(!user) {
-       return res.sendStatus(400);
+       return res.status(400).render('403');
     }
   switch (user.rule) {
     case 'admin': return res.redirect('/admin');
@@ -67,19 +67,21 @@ app.post('/form', async (req,res) => {
 });
 
 app.post('/expert', bodyParser.json(), async (req, res) => {
-  console.log(req.body.problemRatings);
- await userModel.findOneAndUpdate(expert.toObject(), req.body);
+  await userModel.findOneAndUpdate(expert.toObject(), req.body);
   return res.sendStatus(200);
 });
 
-app.post('/admin', bodyParser.json(), function(req, res){
-  userModel.findOneAndRemove(req.body, function(err) {
-    if(err) res.sendStatus(500);
-  });
-})
+app.post('/admin', bodyParser.json(), async (req, res) => {
+  try {
+    await userModel.findOneAndRemove(req.body);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.sendStatus(500);
+  }
+});
 
-// app.use(function(req, res) {
-//   res.status(404).render("404");
-// });
+app.use(function(req, res) {
+  res.status(404).render("404");
+});
 
 module.exports = app;  

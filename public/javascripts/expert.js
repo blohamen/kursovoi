@@ -62,13 +62,12 @@ rateSolution.addEventListener("click", (event)=> {
             currentExpert.problemRatings.push(problem);
             const xhr = new XMLHttpRequest();
             currentExpert = JSON.stringify(currentExpert);
-            debugger;
             xhr.open("POST", "expert");
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.send(currentExpert);
         }
-    }
-})
+}
+});
 
 class Problem{
     constructor(nameProblem, rating){

@@ -9,7 +9,7 @@ function getArrays(problems, users) {
     usersArr = users;
 }
 
-selectProblem.addEventListener("click", event=>{
+selectProblem.addEventListener("click", event => {
     const target = event.target;
     const select = document.getElementById("select");
     if(target.id === "submit"){
@@ -177,10 +177,10 @@ class Diagram {
         this.colors = options.colors;
     }
     draw() {
-        let totalValue = results.reduce((a,b)=>{return a+b}, 0);
+        let totalValue = results.reduce((a,b)=> a+b, 0);
         let colorIndex = 0;
         let startAngle = 0;
-        this.results.forEach(item =>{
+        this.results.forEach(item => {
             let sliceAngle = 2 * Math.PI * item / totalValue;
             let pieRadius = Math.min(this.canvas.width/2,this.canvas.height/2);
             let labelX = this.canvas.width/2 + (pieRadius / 2) * Math.cos(startAngle + sliceAngle/2);
@@ -200,11 +200,10 @@ class Diagram {
             this.ctx.font = "bold 20px Arial";
             this.ctx.fillText(labelText+"%", labelX,labelY);
             startAngle +=sliceAngle;
-            
         })
         colorIndex = 0;
         let legendHTML = "";
-        this.solutions.forEach(item =>{
+        this.solutions.forEach(item => {
         legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[colorIndex++]+";'>&nbsp;</span> "+"<p>"+item.name+ "(Решение №"+ colorIndex+ ")"+"</p>"+"</div>";
         });
         this.options.legend.innerHTML = legendHTML;
